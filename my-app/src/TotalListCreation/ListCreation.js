@@ -13,6 +13,7 @@ const ListCreation = () => {
     const [checkedCheckboxes, setCheckedCheckboxes] = useState([]);
     const [listCount, setListCount] = useState(2)
     const [errorStatus,setErrorStatus]= useState(false)
+    const [selectedList,setSelectedList] = useState([0,1])
     const [createBtnClicked,setCreateBtnClicked] = useState(false)
 
     const intialCall = async () => {
@@ -70,15 +71,16 @@ const ListCreation = () => {
             let value = parseInt(each.split("checkbox")[1])
             selected.push(value)
           })
-          setCheckedCheckboxes(selected)
-          console.log(checkedCheckboxes,selected)
+          let newSelected = selected.sort()
+          setSelectedList(newSelected)
           setData({...data,[`list_${listCount + 1}`]:[]})
         }
         
     }
     const renderListContainers = (param) => {
         return [...Array(param)].map((_, index) => {
-             let check = true
+            let check = true
+             console.log(listCount,selectedList)
              return (
                 check && (
                     <AlignDiv key={index} style={{order:index+1 === 2 && 2}}>
@@ -89,7 +91,7 @@ const ListCreation = () => {
                         </ListHeadAlignCont>
                     
                         {data?.[`list_${index + 1}`]?.map((each, innerIndex) => (
-                            <ListComp key={innerIndex} details={each} createBtnClicked={createBtnClicked} listIndex={index+1} data={data} setData={setData} listCount={listCount}/>
+                            <ListComp key={innerIndex} details={each} createBtnClicked={createBtnClicked} listIndex={index+1} data={data} setData={setData} listCount={listCount} selectedList={selectedList}/>
                         ))}
                     </EachListContainer>
                 </AlignDiv>

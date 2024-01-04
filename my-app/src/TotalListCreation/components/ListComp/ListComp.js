@@ -3,7 +3,7 @@ import { Description, IconCont, IconImg, TextAlignCont, TitleCont, TotalListCont
 import icon from "../../Icons/leftIcon.png"
 let newarray = []
 const ListComp = (props) => {
-  const { details, createBtnClicked, listIndex, data, setData, listCount } = props;
+  const { details, createBtnClicked, listIndex, data, setData, listCount,selectedList } = props;
   const { name, description, id,list_number } = details
   const moveToNewList = (value) => {
     let filterList = data?.[`list_${listIndex}`].filter((each) => each.id !== value)
@@ -13,20 +13,22 @@ const ListComp = (props) => {
     setData({ ...data, [`list_${listIndex}`]: filterList, [`list_${listCount}`]: newarray })
   }
   const moveToOldLeftList = (value) => {
+    console.log(selectedList)
     if(listCount === listIndex){
          let newList = data?.[`list_${listIndex}`].filter((each) => each.id !== value)
          let newRemovedEl = data?.[`list_${listIndex}`].filter((each) => each.id === value)
-         data?.[`list_${1}`].push(...newRemovedEl)
+         data?.[`list_${selectedList[0]}`].push(...newRemovedEl)
          newarray = []
          setData({ ...data,[`list_${listIndex}`]: newList })
       
     }
   }
   const moveToOldRightList = (value) => {
+    console.log(selectedList)
     if(listCount === listIndex){
       let newList = data?.[`list_${listIndex}`].filter((each) => each.id !== value)
       let newRemovedEl = data?.[`list_${listIndex}`].filter((each) => each.id === value)
-      data?.[`list_${2}`].push(...newRemovedEl)
+      data?.[`list_${selectedList[1]}`].push(...newRemovedEl)
       newarray = []
       setData({ ...data,[`list_${listIndex}`]: newList })
    
