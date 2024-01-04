@@ -1,10 +1,17 @@
 import React from 'react'
+import { Description, TextAlignCont, TitleCont, TotalListCont } from './ListComp.styled'
 
-const ListComp = () => {
+const ListComp = (props) => {
+  const {details} = props;
+  const {name,description} = details
   return (
-    <div>
+    <TotalListCont>
+      <TextAlignCont>
+      <TitleCont>{name}</TitleCont>
+      <Description>{description}</Description>
+      </TextAlignCont>
       
-    </div>
+    </TotalListCont>
   )
 }
 

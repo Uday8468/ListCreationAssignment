@@ -23,7 +23,7 @@ justify-content:center;
 align-items:center;
 width:100%;
 gap:15px;
- flex: 0 0 20%;
+height: 20%;
 `
 
 export const ListCreationHeading = styled.h1`
@@ -51,11 +51,35 @@ border: none;
 export const EachListAlignCont = styled.div`
 align-self: flex-start;
 margin-left:25px;
-flex: 0 0 80%;
+height:80%;
+display: flex;
+    gap: 30px;
 `
 export const EachListContainer = styled.div`
-width:300px;
+width:275px;
 background:#B0E5F4;
 border-radius: 10px;
+display: flex;
+    flex-direction: column;
+    align-items:center;
+    gap: 5px;
+    border-top-right-radius: unset;
+`
 
+export const ListHeading = styled.div`
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+color:black;
+align-self: flex-start;
+    margin-left: 25px;
+    margin-top:40px;
+    margin-bottom:20px;
+`
+export const AlignDiv = styled.div`
+height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
 `
