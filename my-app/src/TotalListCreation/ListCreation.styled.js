@@ -47,6 +47,7 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 border: none;
+cursor:pointer;
 `
 export const EachListAlignCont = styled.div`
 align-self: flex-start;
@@ -57,8 +58,7 @@ display: flex;
 `
 export const EachListContainer = styled.div`
 width:275px;
-background:#B0E5F4;
-border-radius: 10px;
+
 display: flex;
     flex-direction: column;
     align-items:center;
@@ -74,12 +74,48 @@ font-weight: 500;
 line-height: normal;
 color:black;
 align-self: flex-start;
-    margin-left: 25px;
-    margin-top:40px;
-    margin-bottom:20px;
+    
 `
 export const AlignDiv = styled.div`
 height: 100%;
     overflow: scroll;
     overflow-x: hidden;
+    background:#64d4fa;
+border-radius: 10px;
+`
+export const CheckBoxElement = styled.input``
+
+export const ListHeadAlignCont = styled.div`
+display:flex;
+gap:15px;
+align-self: flex-start;
+    margin-left: 15px;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+`
+export const ErrorMessage = styled.p`
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+color:red;
+`
+export const FooterCont = styled(HeaderContainer)`
+flex-direction:row;
+`
+
+export const CancelBtn = styled.div`
+background: white;
+    padding: 6px;
+    border-radius: 5px;
+    color: black;
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+border: 1px solid black ;
+cursor:pointer;
 `

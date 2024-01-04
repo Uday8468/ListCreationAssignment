@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components'
 
 export const TotalListCont = styled.div`
 width:245px;
-height:90px;
+height:${(props) => (props.status === "true" ? '120px' : '90px')};
 background:white;
 display:flex;
 flex-direction:column;
@@ -37,4 +37,19 @@ display: flex;
     align-items: flex-start;
     gap: 12px;
     margin-left:20px;
+`
+export const IconCont = styled.div`
+width:20px;
+height:20px;
+align-self: flex-end;
+margin-right:20px;
+cursor:pointer;
+`
+export const IconImg = styled.img`
+height:20px;
+width:20px;
+`
+export const TotalLogoContainer = styled.div`
+display:flex;
+justify-content:space-between;
 `
