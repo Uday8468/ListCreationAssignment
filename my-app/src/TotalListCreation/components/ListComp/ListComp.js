@@ -5,15 +5,21 @@ let newarray = []
 const ListComp = (props) => {
   const { details, createBtnClicked, listIndex, data, setData, listCount,selectedList } = props;
   const { name, description, id,list_number } = details
+  let length = Object.keys(data).length
   const moveToNewList = (value) => {
     let filterList = data?.[`list_${listIndex}`].filter((each) => each.id !== value)
     let removedEl = data?.[`list_${listIndex}`].filter((each) => each.id === value)
     newarray.push(...removedEl)
-    
     setData({ ...data, [`list_${listIndex}`]: filterList, [`list_${listCount}`]: newarray })
   }
+  useEffect(() => {
+    if(!createBtnClicked){
+      newarray = []
+    }
+
+  },[createBtnClicked])
+  console.log(selectedList)
   const moveToOldLeftList = (value) => {
-    console.log(selectedList)
     if(listCount === listIndex){
          let newList = data?.[`list_${listIndex}`].filter((each) => each.id !== value)
          let newRemovedEl = data?.[`list_${listIndex}`].filter((each) => each.id === value)
@@ -24,7 +30,6 @@ const ListComp = (props) => {
     }
   }
   const moveToOldRightList = (value) => {
-    console.log(selectedList)
     if(listCount === listIndex){
       let newList = data?.[`list_${listIndex}`].filter((each) => each.id !== value)
       let newRemovedEl = data?.[`list_${listIndex}`].filter((each) => each.id === value)
@@ -34,6 +39,9 @@ const ListComp = (props) => {
    
  }
   }
+  // useEffect(() => {
+  //  console.log(data)
+  // },[data])
   return (
     <TotalListCont status={createBtnClicked.toString()}>
       <TextAlignCont>
@@ -59,7 +67,6 @@ const ListComp = (props) => {
             )}
             <IconCont onClick={() => {
               if(listCount !== listIndex){
-                console.log("in right")
                 moveToNewList(id)
               }else{
               moveToOldRightList(id)
@@ -67,7 +74,7 @@ const ListComp = (props) => {
               
             }}>
 
-              <IconImg draggable={false} src={icon} style={{ transform: listIndex % 2 !== 0 && "rotate(180deg)" }} />
+              <IconImg draggable={false} src={icon} style={{ transform:  listIndex % 2 !== 0 && "rotate(180deg)" }} />
             </IconCont>
             
           </TotalLogoContainer>

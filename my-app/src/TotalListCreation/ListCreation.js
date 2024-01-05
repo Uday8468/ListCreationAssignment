@@ -14,6 +14,7 @@ const ListCreation = () => {
     const [listCount, setListCount] = useState(2)
     const [errorStatus,setErrorStatus]= useState(false)
     const [selectedList,setSelectedList] = useState([0,1])
+    const [started,setStarted] = useState(false)
     const [createBtnClicked,setCreateBtnClicked] = useState(false)
 
     const intialCall = async () => {
@@ -61,6 +62,7 @@ const ListCreation = () => {
          }, 3000);
         }else{
           setCreateBtnClicked(true)
+          setStarted(true)
         //   let jsonString = JSON.stringify(data)
         //     localStorage.setItem('intialData', jsonString);
         //     localStorage.setItem('listCount', listCount);
@@ -71,6 +73,7 @@ const ListCreation = () => {
             let value = parseInt(each.split("checkbox")[1])
             selected.push(value)
           })
+          selected.push(listCount + 1)
           let newSelected = selected.sort()
           setSelectedList(newSelected)
           setData({...data,[`list_${listCount + 1}`]:[]})
@@ -79,8 +82,7 @@ const ListCreation = () => {
     }
     const renderListContainers = (param) => {
         return [...Array(param)].map((_, index) => {
-            let check = true
-             console.log(listCount,selectedList)
+            let check = started ? selectedList.includes(index+1) : listCount
              return (
                 check && (
                     <AlignDiv key={index} style={{order:index+1 === 2 && 2}}>
@@ -107,6 +109,7 @@ const ListCreation = () => {
         let jsonString = JSON.stringify(data)
         localStorage.setItem("intialData",jsonString)
         localStorage.setItem('listCount', listCount);
+        setStarted(false)
     }
     // const cancelTheOperation = () => {
     //     setCreateBtnClicked(false)
