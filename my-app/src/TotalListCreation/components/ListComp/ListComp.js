@@ -18,7 +18,6 @@ const ListComp = (props) => {
     }
 
   },[createBtnClicked])
-  console.log(selectedList)
   const moveToOldLeftList = (value) => {
     if(listCount === listIndex){
          let newList = data?.[`list_${listIndex}`].filter((each) => each.id !== value)
